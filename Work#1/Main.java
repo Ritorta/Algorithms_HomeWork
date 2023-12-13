@@ -56,23 +56,32 @@ public class Main
 
     }
 
+    static void printArray(int array[])
+    {
+        int n = array.length;
+        for(int i = 0; i < n; i++)
+        {
+            System.out.print(array[i] + " ");
+        }
+    }
 
     public static void main(String[] args) 
     {
         Random rand = new Random();
         int array[] = new int[30];
+        System.out.print("Insorted array: ");
         for (int i = 0; i < array.length; i++) 
         {
-            array[i] = rand.nextInt(100);
-            System.out.print("Insorted array: "); 
+            array[i] = rand.nextInt(100); 
             System.out.print(array[i] + " ");    
         } 
         
         Main run = new Main();
         run.heapSort(array);
 
-        System.out.println("Sorted array: ");
-        
-    }
+        System.out.println();
+        System.out.print("Sorted array: ");
+        printArray(array);
 
+    }
 }
