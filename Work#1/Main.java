@@ -27,9 +27,10 @@ public class Main
             int temp = array[i];
             array[i] = array[root];
             array[root] = temp;
-        }
 
-        compareElementRoot(array, n, root); // Рекурсия в двойную кучу
+            compareElementRoot(array, n, root); // Рекурсия в двойную кучу
+
+        }
 
     }
     
@@ -63,9 +64,14 @@ public class Main
         for (int i = 0; i < array.length; i++) 
         {
             array[i] = rand.nextInt(100);
-            System.out.println(array[i] + ' ');    
+            System.out.print("Insorted array: "); 
+            System.out.print(array[i] + " ");    
         } 
         
+        Main run = new Main();
+        run.heapSort(array);
+
+        System.out.println("Sorted array: ");
         
     }
 
