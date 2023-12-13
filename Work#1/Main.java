@@ -31,7 +31,6 @@ public class Main
             compareElementRoot(array, n, root); // Рекурсия в двойную кучу
 
         }
-
     }
     
     public void heapSort(int array[])
@@ -53,7 +52,6 @@ public class Main
             compareElementRoot(array, i, 0); // начинаем сортировку оставшегося массива
 
         }
-
     }
 
     static void printArray(int array[])
@@ -62,6 +60,7 @@ public class Main
         for(int i = 0; i < n; i++)
         {
             System.out.print(array[i] + " ");
+
         }
     }
 
@@ -69,7 +68,9 @@ public class Main
     {
         Random rand = new Random();
         int array[] = new int[30];
+
         System.out.print("Insorted array: ");
+
         for (int i = 0; i < array.length; i++) 
         {
             array[i] = rand.nextInt(100); 
