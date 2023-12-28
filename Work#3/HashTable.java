@@ -3,7 +3,6 @@ public class HashTable<K, V>
     private static final int INIT_BASCET_COUNT = 16;
     
     private Basket[] baskets;
-    
     public HashTable(int initSize) 
     {
         this.baskets = (Basket[])new Object[initSize];
@@ -19,6 +18,17 @@ public class HashTable<K, V>
         return key.hashCode() % baskets.length;
     }
 
+    public V get(K key)
+    {
+        int index = calcilateBasketIndex(key);
+        Basket basket = baskets[index];
+        if(basket != null)
+        {
+            return basket.get(key);
+        }
+        return null;
+    }
+
     private class Entity
     {
         private K key;
@@ -28,7 +38,6 @@ public class HashTable<K, V>
     private class Basket
     {
         private Node head;
-
         private class Node
         {
             private Node next;
@@ -38,7 +47,6 @@ public class HashTable<K, V>
         public V get(K key)
         {
             Node node = head;
-
             while(node != null)
             {
                 if(node.value.key.equals(key))
