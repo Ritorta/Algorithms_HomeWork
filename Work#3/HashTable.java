@@ -1,7 +1,26 @@
 public class HashTable<K, V> 
 {
     private static final int INIT_BASCET_COUNT = 16;
-    
+    private static final double LOAD_FACTOR = 0.75;
+    private int size = 0;
+
+    private void recalcuale()
+    {   
+        Basket[] old = baskets;
+        baskets = (Basket[]) new Object[old.length * 2];
+        for(int i = 0; i < old.length; i++)            
+        {
+            Basket basket =old[i];
+            Basket.Node node = basket.head;
+            while(node != null)
+            {
+                put(node.value.key, node.value.value);
+                node = node.next;
+            }
+            old[i] = null;
+        }
+    }
+
     private Basket[] baskets;
     public HashTable(int initSize) 
     {
@@ -37,6 +56,10 @@ public class HashTable<K, V>
 
     public boolean put(K key, V value)
     {
+        if(baskets.length * LOAD_FACTOR < size)
+        {
+            recalcuale();
+        }
         int index = calcilateBasketIndex(key);
         Basket basket = baskets[index];
         if(basket == null)
@@ -47,14 +70,27 @@ public class HashTable<K, V>
         Entity entity = new Entity();
         entity.key = key;
         entity.value = value;
-        return basket.add(entity);
+        // return basket.add(entity);
+        boolean add = basket.add(entity);
+        if(add)
+        {
+            size++;
+        }
+        return add;
+
     }
 
     public boolean remove(K key)
     {
         int index = calcilateBasketIndex(key);
         Basket basket = baskets[index];
-        return basket.remove(key);
+       // return basket.remove(key);
+       boolean remove = basket.remove(key);
+       if(remove)
+       {
+            size--;
+       }
+       return remove;
     }
 
     private class Basket
