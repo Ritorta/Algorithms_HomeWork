@@ -31,40 +31,22 @@ public class RedBlackTreeV1 <V extends Comparable>
         }
         return false;
     }
-            
-    private Node rotateLeft(Node h) 
-    {
-        Node x = h.right;
-        h.right = x.left;
-        x.left = h;
-        x.color = h.color;
-        h.color = RED;
-        return x;
-    }
-            
-    private Node rotateRight(Node h) 
-    {
-        Node x = h.left;
-        h.left = x.right;
-        x.right = h;
-        x.color = h.color;
-        h.color = RED;
-        return x;
-    }
-            
-    private void flipColors(Node h) 
-    {
-        h.color = RED;
-        h.left.color = BLACK;
-        h.right.color = BLACK;
-    }
-            
+
     public void insert(V value) 
     {
         root = insert(root, value);
         root.color = BLACK;
     }
             
+    private boolean isRed(Node x) 
+    {
+        if (x == null) 
+        {
+            return false;
+        }
+        return x.color == RED;
+    }
+             
     private Node insert(Node h, V value) 
     {
         if (h == null) 
@@ -100,14 +82,32 @@ public class RedBlackTreeV1 <V extends Comparable>
         }
             return h;
     }        
-        
-    private boolean isRed(Node x) 
+            
+    private Node rotateLeft(Node h) 
     {
-        if (x == null) 
-        {
-            return false;
-        }
-        return x.color == RED;
+        Node x = h.right;
+        h.right = x.left;
+        x.left = h;
+        x.color = h.color;
+        h.color = RED;
+        return x;
     }
-                
+            
+    private Node rotateRight(Node h) 
+    {
+        Node x = h.left;
+        h.left = x.right;
+        x.right = h;
+        x.color = h.color;
+        h.color = RED;
+        return x;
+    }
+            
+    private void flipColors(Node h) 
+    {
+        h.color = RED;
+        h.left.color = BLACK;
+        h.right.color = BLACK;
+    }
+            
 }
