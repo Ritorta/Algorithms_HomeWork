@@ -25,7 +25,7 @@ public class Main
         // Создание экземпляра класса
        // RedBlackTreeV1<Integer> tree = new RedBlackTreeV1<>(); 
        // RedBlackTreeV2 tree = new RedBlackTreeV2(); // Создание экземпляра класса
-        RedBlackTreeV3 tree = new RedBlackTreeV3(); // Создание экземпляра класса
+        RedBlackTree tree = new RedBlackTree(); // Создание экземпляра класса
         
         // Вставка элементов в дерево
         tree.insert(5); 
