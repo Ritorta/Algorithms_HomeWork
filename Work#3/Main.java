@@ -23,7 +23,7 @@ public class Main
     public static void main(String[] args) 
     {
         // Создание экземпляра класса
-       // RedBlackTreeV1<Integer> tree = new RedBlackTreeV1<>(); 
+        RedBlackTreeV1<Integer> tree = new RedBlackTreeV1<>(); 
        // RedBlackTreeV2 tree = new RedBlackTreeV2(); // Создание экземпляра класса
         RedBlackTree tree = new RedBlackTree(); // Создание экземпляра класса
         
