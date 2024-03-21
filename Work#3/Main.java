@@ -23,13 +23,13 @@ public class Main {
         RedBlackTree<Integer, String> tree = new RedBlackTree<>();
 
         // Вставка элементов в дерево
-        tree.put(5, "Five");
-        tree.put(3, "Three");
-        tree.put(8, "Eight");
+        tree.put(1, "Five");
+        tree.put(2, "Three");
+        tree.put(3, "Eight");
 
         // Проверка, содержит ли дерево ключи
-        System.out.println("Does the tree contain key 4? " + (tree.get(4) != null));
-        System.out.println("Does the tree contain key 3? " + (tree.get(3) != null));
+        System.out.println("Does the tree contain key? " + (tree.get(1) != null));
+        System.out.println("Does the tree contain key? " + (tree.get(2) != null));
 
         // Дополнительная проверка
         tree.put(4, "Four");
