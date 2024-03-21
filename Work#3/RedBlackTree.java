@@ -1,6 +1,5 @@
-public class RedBlackTree
-{
-private final Node EMPTY = new Node(0);
+public class RedBlackTree {
+private  final Node EMPTY = new Node(0);
 private Node header;
     public class Node 
     {
@@ -20,37 +19,47 @@ private Node header;
 
     public enum Color 
     {
-        RED,
-        BLACK;
+        RED, BLACK; 
     }
-
+    
     protected Node current;
     private Node parent;
     private Node grand;
     private Node great;
     
+
+
     public RedBlackTree() 
     {
         header = new Node(Integer.MIN_VALUE);
+        EMPTY.left = EMPTY;
+        EMPTY.right = EMPTY;
         header.left = EMPTY;
         header.right = EMPTY;
-    }
 
+        // RedBlackTreeV3 tree = new RedBlackTreeV3(); // Создание экземпляра класса
+        // // Вставка элементов в дерево
+        // tree.insert(5); 
+        // tree.insert(3);
+        // tree.insert(8);
+        // // Проверка, содержит ли дерево значение true/false
+        // System.out.println(tree.contains(4)); 
+        // System.out.println(tree.contains(2));
+    }
     public void insert(int item) 
     {
-        
-
         current = parent = grand = header;
-        
+
         Node newItem = new Node(item);
-        
+
         while (current.value != newItem.value) 
         {
             great = grand;
             grand = parent;
             parent = current;
             current = newItem.value > current.value ? current.right : current.left;
-            if (current != null && current.left != null && current.right != null && current.left.color == Color.RED && current.right.color == Color.RED)
+
+            if (current.left.color == Color.RED && current.right.color == Color.RED) 
             {
                 reorient(newItem);
             }
@@ -62,11 +71,10 @@ private Node header;
         }
 
         current = newItem;
-        if (newItem.value < parent.value) 
+        if (newItem.value < parent.value)
         {
             parent.left = current;
-        } 
-        else 
+        } else 
         {
             parent.right = current;
         }
@@ -76,11 +84,8 @@ private Node header;
     protected void reorient(Node item) 
     {
         current.color = Color.RED;
-        if (current.left != null && current.left.color == Color.RED && current.right != null && current.right.color == Color.RED) 
-        {
         current.left.color = Color.BLACK;
         current.right.color = Color.BLACK;
-        }
 
         if (parent.color == Color.RED) 
         {
@@ -113,9 +118,7 @@ private Node header;
             }
             parent.left = node;
             return node;
-        } 
-        else 
-        {
+        } else {
             Node node = parent.right;
             if (node.left.color == Color.RED) 
             {
@@ -146,28 +149,21 @@ private Node header;
         return right;
     }
 
-    public boolean contains(int value) 
-    {
+    public boolean contains(int value) {
         Node current = header.right;
-        while (current != EMPTY) 
-        {
-            if (value == current.value) 
-            {
+        while (current != EMPTY) {
+            if (value == current.value) {
                 return true;
-            } 
-            else if (current.left != EMPTY && value < current.value) 
-            {
+            } else if (current.left != EMPTY && value < current.value) {
                 current = current.left;
-            } 
-            else if (current.right != EMPTY && value > current.value) 
-            {
+            } else if (current.right != EMPTY && value > current.value) {
                 current = current.right;
-            } 
-            else 
-            {
+            } else {
                 return false;
             }
         }
         return false;
     }
+
+   
 }

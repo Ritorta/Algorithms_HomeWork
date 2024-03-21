@@ -23,18 +23,17 @@ public class Main
     public static void main(String[] args) 
     {
         // Создание экземпляра класса
-        RedBlackTreeV1<Integer> tree = new RedBlackTreeV1<>(); 
-       // RedBlackTreeV2 tree = new RedBlackTreeV2(); // Создание экземпляра класса
-        RedBlackTree tree = new RedBlackTree(); // Создание экземпляра класса
-        
+    //RedBlackTreeV1<Integer> tree = new RedBlackTreeV1<>(); 
+    RedBlackTree tree = new RedBlackTree(); // Создание экземпляра класса
+    
         // Вставка элементов в дерево
         tree.insert(5); 
         tree.insert(3);
         tree.insert(8);
 
-
         // Проверка, содержит ли дерево значение true/false
         System.out.println(tree.contains(4)); 
         System.out.println(tree.contains(2));
+        
     }
 }
