@@ -18,22 +18,21 @@
 // - правый малый поворот
 // - смена цвета.
 
-public class Main 
-{
-    public static void main(String[] args) 
-    {
-        // Создание экземпляра класса
-    //RedBlackTreeV1<Integer> tree = new RedBlackTreeV1<>(); 
-    RedBlackTree tree = new RedBlackTree(); // Создание экземпляра класса
-    
-        // Вставка элементов в дерево
-        tree.insert(5); 
-        tree.insert(3);
-        tree.insert(8);
+public class Main {
+    public static void main(String[] args) {
+        RedBlackTree<Integer, String> tree = new RedBlackTree<>();
 
-        // Проверка, содержит ли дерево значение true/false
-        System.out.println(tree.contains(4)); 
-        System.out.println(tree.contains(2));
-        
+        // Вставка элементов в дерево
+        tree.put(5, "Five");
+        tree.put(3, "Three");
+        tree.put(8, "Eight");
+
+        // Проверка, содержит ли дерево ключи
+        System.out.println("Does the tree contain key 4? " + (tree.get(4) != null));
+        System.out.println("Does the tree contain key 3? " + (tree.get(3) != null));
+
+        // Дополнительная проверка
+        tree.put(4, "Four");
+        System.out.println("Does the tree contain key 4 now? " + (tree.get(4) != null));
     }
 }
